@@ -56,8 +56,15 @@ public class MyLinkedList<T> implements MyList<T>{
 	 * 反转单链表
 	 */
 	public void reverse() {
-		
-		
+		Node<T> newhead = null;    // 新头节点（该头节点也包含值）要反转节点的前驱
+		Node<T> now = head.getNex();    // 开始反转的节点
+		while(now != null) {
+			Node<T> nex = now.getNex();   // 要反装节点的下一个节点
+			now.setNex(newhead);              // 当前节点指向新头
+			newhead = now;                //反装之后新头移动
+			now = nex;
+		}
+		head.setNex(newhead);     // 头节点指向新的头
 	}
 
 	@Override
